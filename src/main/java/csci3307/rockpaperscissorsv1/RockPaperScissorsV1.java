@@ -30,26 +30,73 @@ public class RockPaperScissorsV1 {
                 // Initialize Scanner for Getting Input from User
         Scanner playerInput = new Scanner(System.in);
  
-                // Print prompt - get player choice
+                // Print prompt - get player choice from console
         System.out.println(PLAYER_PROMPT);
         int playerChoice = playerInput.nextInt();
+            // format - Math.random()* range_high-low + min_value
+        int computerChoice = (int)(Math.random() * 2) + 0;
+        
+        /*
+         * Approach - 3 player choices - 3 computer choices - so 9 cases
+         *   Exhaustive implemententation
+         *      switch on player choice, for each choice, switch on comp choice
+         * ToDo - this doesn't scale well & is hard to read even with 3 choices
+        */
         while (true) {
             switch (playerChoice) {
-                case 0:
+                case 0:  // player chose Rock
                     System.out.println("You picked ROCK");
-                    break;
-                case 1:
+                    switch (computerChoice) {
+                        case 0:
+                            System.out.println("You both picked Rock.  It's a tie!");
+                            break;
+                        case 1:
+                            System.out.println("Paper covers rock.  Computer wins!");
+                            break;
+                        case 2:
+                            System.out.println("Rock dulls scissors.  You win!");
+                            break;
+                        default:  // null default - included for readability, should never get here
+                    }
+                    break;  // end Rock
+                case 1:     // player chose Paper
                     System.out.println("You picked PAPER");
-                    break;
-                case 2:
+                    switch (computerChoice) {
+                        case 0:
+                            System.out.println("Paper covers rock.  You win!");
+                            break;
+                        case 1:
+                            System.out.println("You both picked paper.  It's a tie!");
+                            break;
+                        case 2:
+                            System.out.println("Scissors cut paper.  Computer wins!");
+                            break;
+                        default:  // null default - included for readability, should never get here
+                    }
+                    break;  // end Paper
+                case 2:     // player chose Scissors
                     System.out.println("You picked SCISSORS");
-                    break;
+                    switch (computerChoice) {
+                        case 0:
+                            System.out.println("Rock dulls scissors.  Computer wins!");
+                            break;
+                        case 1:
+                            System.out.println("Scissors cut paper.  You win!");
+                            break;
+                        case 2:
+                            System.out.println("You both picked scissors.  It's a tie!");
+                            break;
+                        default:  // null default - included for readability, should never get here
+                    }
+                    break; // end Scissors
                 default:
                     System.out.println("INVALID CHOICE:" + PLAYER_PROMPT);
             }
-            playerChoice = playerInput.nextInt();         
+            
+            // get input for next round
+            // ToDo - add a case for quitting based on user input
+            playerChoice = playerInput.nextInt();
+            computerChoice = (int)(Math.random() * 2) + 0;
         }
-
     }
-    
 }
