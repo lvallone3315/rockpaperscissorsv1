@@ -5,6 +5,8 @@
  */
 package csci3307.rockpaperscissorsv1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Lee
@@ -17,12 +19,37 @@ public class RockPaperScissorsV1 {
             + "Computer will randomly select it's choice\n"
             + "and the round result will be displayed.\n"
             + "The game continues until you close the program\n";
+    
+    static final String PLAYER_PROMPT = "\nPlease enter choice (0,1,2)\n";
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         System.out.println(RPS_INTRO_MESSAGE);
         
+                // Initialize Scanner for Getting Input from User
+        Scanner playerInput = new Scanner(System.in);
+ 
+                // Print prompt - get player choice
+        System.out.println(PLAYER_PROMPT);
+        int playerChoice = playerInput.nextInt();
+        while (true) {
+            switch (playerChoice) {
+                case 0:
+                    System.out.println("You picked ROCK");
+                    break;
+                case 1:
+                    System.out.println("You picked PAPER");
+                    break;
+                case 2:
+                    System.out.println("You picked SCISSORS");
+                    break;
+                default:
+                    System.out.println("INVALID CHOICE:" + PLAYER_PROMPT);
+            }
+            playerChoice = playerInput.nextInt();         
+        }
+
     }
     
 }
