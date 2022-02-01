@@ -5,6 +5,7 @@
  */
 package csci3307.rockpaperscissorsv1;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -33,8 +34,11 @@ public class RockPaperScissorsV1 {
                 // Print prompt - get player choice from console
         System.out.println(PLAYER_PROMPT);
         int playerChoice = playerInput.nextInt();
-            // format - Math.random()* range_high-low + min_value
-        int computerChoice = (int)(Math.random() * 2) + 0;
+        
+            // Generate random number in range 0..2
+        Random r = new Random();
+        int computerChoice = r.nextInt(3);
+                
         
         /*
          * Approach - 3 player choices - 3 computer choices - so 9 cases
@@ -96,7 +100,7 @@ public class RockPaperScissorsV1 {
             // get input for next round
             // ToDo - add a case for quitting based on user input
             playerChoice = playerInput.nextInt();
-            computerChoice = (int)(Math.random() * 2) + 0;
+            computerChoice = r.nextInt(3);
         }
     }
 }
